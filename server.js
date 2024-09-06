@@ -15,9 +15,10 @@ app.use(express.json());
 
 // CORS configuration
 const corsOptions = {
-  origin: 'https://portfolio-jesutobi.vercel.app', // Allow requests from your frontend URL
-  methods: ['GET'], // Allow specific HTTP methods
-  allowedHeaders: ['Content-Type'] // Allow specific headers
+    //   origin: 'https://portfolio-jesutobi.vercel.app', // Allow requests from your frontend URL
+    origin: '*', // Allows requests from any origin (use this for development only)
+    methods: ['GET'], // Allow specific HTTP methods
+    allowedHeaders: ['Content-Type'] // Allow specific headers
 };
 
 app.use(cors(corsOptions)); // Use the CORS middleware with the configured options
