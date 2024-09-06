@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const express = require("express");
 const mongoose = require('mongoose');
+const cors = require('cors');  // Import the cors package
 const app = express();
 
 // Use environment variables for PORT and MongoDB connection string
@@ -11,6 +12,15 @@ const mongoUri = process.env.MONGODB_URI;
 
 // Middleware to parse JSON
 app.use(express.json());
+
+// CORS configuration
+const corsOptions = {
+  origin: 'https://portfolio-jesutobi.vercel.app', // Allow requests from your frontend URL
+  methods: ['GET'], // Allow specific HTTP methods
+  allowedHeaders: ['Content-Type'] // Allow specific headers
+};
+
+app.use(cors(corsOptions)); // Use the CORS middleware with the configured options
 
 // Import your Project model
 const Project = require("./models/ProjectModel");
