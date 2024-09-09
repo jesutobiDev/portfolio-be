@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require("express");
 const mongoose = require('mongoose');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const app = express();
 
 // Use environment variables for PORT and MongoDB connection string
@@ -18,19 +17,18 @@ const corsOptions = {
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'] // Allow specific headers
 };
-
 app.use(cors(corsOptions)); // Use the CORS middleware with the configured options
 
 // Import routes
-const projectRoutes = require("./routes/projects");
-const contactsRoutes = require("./routes/contacts");
+const projectRoutes = require("./routes/projects"); // Assuming you have routes for projects
+const contactsRoutes = require("./routes/contacts"); // Assuming you have routes for contacts
 
 // Use the routes
 app.use("/projects", projectRoutes);
 app.use("/contacts", contactsRoutes);
 
 // Connect to MongoDB using the connection string from the .env file
-mongoose.connect(mongoUri)
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         app.listen(port, () => {
             console.log(`Server is running on port ${port}`);
