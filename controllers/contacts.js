@@ -17,15 +17,18 @@ exports.createContact = async (req, res) => {
     await newContact.save();
 
     const transporter = nodemailer.createTransport({
-      host: 'smtp-mail.outlook.com',
-      port: 465,
-      secure: true, // Use SSL
+      host: "smtp-mail.outlook.com",
+      port: 587,
+      tls: {
+        ciphers: "SSLv3",
+        rejectUnauthorized: false,
+      },
       auth: {
         user: process.env.OUTLOOK_USER,
         pass: process.env.OUTLOOK_PASS,
       },
     });
-    
+
 
     // Define email options
     const mailOptions = {
