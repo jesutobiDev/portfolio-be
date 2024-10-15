@@ -17,24 +17,20 @@ exports.createContact = async (req, res) => {
     await newContact.save();
 
     const transporter = nodemailer.createTransport({
-      host: "smtp-mail.outlook.com",
-      port: 587,
-      tls: {
-        ciphers: "SSLv3",
-        rejectUnauthorized: false,
-      },
+      host: "smtp.gmail.com",
+      port: 465,
       auth: {
-        user: process.env.OUTLOOK_USER,
-        pass: process.env.OUTLOOK_PASS,
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
       },
     });
 
 
     // Define email options
     const mailOptions = {
-      from: process.env.OUTLOOK_USER, // Use your Outlook email
+      from: process.env.GMAIL_USER, // Use your Outlook email
       replyTo: email, // User's email for replies
-      to: process.env.OUTLOOK_USER, // Send email to yourself
+      to: process.env.GMAIL_USER, // Send email to yourself
       subject: `New Contact Form Submission from ${name}`,
       text: `You have received a new message from your website's contact form:
 
