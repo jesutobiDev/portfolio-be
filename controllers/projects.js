@@ -26,7 +26,41 @@ const getProjectById = async (req, res) => {
     }
 };
 
+// Create a new project
+const createProject = async (req, res) => {
+    try {
+        const {
+            title,
+            description,
+            year,
+            technologies,
+            breakpoints,
+            images,
+            liveLink,
+            repoLink,
+        } = req.body;
+
+        const newProject = new Project({
+            title,
+            description,
+            year,
+            technologies,
+            breakpoints,
+            images,
+            liveLink,
+            repoLink,
+        });
+
+        const savedProject = await newProject.save();
+        res.status(201).json(savedProject);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getAllProjects,
     getProjectById,
+    createProject,
 };
