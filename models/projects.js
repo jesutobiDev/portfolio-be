@@ -41,8 +41,7 @@ const projectSchema = new mongoose.Schema({
     required: true,
   },
   repoLink: {
-    type: String,
-    required: true,
+    type: String
   }
 }, { timestamps: true });
 
