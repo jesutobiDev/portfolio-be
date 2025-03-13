@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const mongoose = require('mongoose');
 const cors = require('cors');
+const axios = require(axios);
 const app = express();
 
 // Use environment variables for PORT and MongoDB connection string
