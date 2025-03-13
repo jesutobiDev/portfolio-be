@@ -14,15 +14,15 @@ app.use(express.json());
 
 // CORS configuration
 const corsOptions = {
-    origin: '*', // Allow requests from any origin (for development only)
+    origin: '*',
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'] // Allow specific headers
+    allowedHeaders: ['Content-Type'] 
 };
-app.use(cors(corsOptions)); // Use the CORS middleware with the configured options
+app.use(cors(corsOptions));
 
 // Import routes
-const projectRoutes = require("./routes/projects"); // Assuming you have routes for projects
-const contactsRoutes = require("./routes/contacts"); // Assuming you have routes for contacts
+const projectRoutes = require("./routes/projects");
+const contactsRoutes = require("./routes/contacts");
 
 // Use the routes
 app.use("/projects", projectRoutes);
@@ -43,7 +43,7 @@ mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 
-    const url = `https://portfolio-be-907d.onrender.com`;
+const url = `https://portfolio-be-907d.onrender.com/`;
 const interval = 30000;
 
 //Reloader Function
