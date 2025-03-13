@@ -38,3 +38,22 @@ mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((error) => {
         console.error("Failed to connect to MongoDB", error);
     });
+
+
+
+
+    const url = `https://portfolio-be-907d.onrender.com`;
+const interval = 30000;
+
+//Reloader Function
+function reloadWebsite() {
+  axios.get(url)
+    .then(response => {
+      console.log(`Reloaded at ${new Date().toISOString()}: Status Code ${response.status}`);
+    })
+    .catch(error => {
+      console.error(`Error reloading at ${new Date().toISOString()}:`, error.message);
+    });
+}
+
+setInterval(reloadWebsite, interval);
